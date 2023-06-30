@@ -10,10 +10,10 @@ export default function DesktopFolderIcon({
   setPositions,
   setOnTop,
   imageSrc,
+  selectWindow,
 }) {
   const hasMovedRef = useRef(false); // New ref to track move status
   const dragOffset = useRef({ x: 0, y: 0 });
-  const router = useRouter();
 
   const move = useCallback(
     (e) => {
@@ -38,16 +38,6 @@ export default function DesktopFolderIcon({
     [index, setPositions, position]
   );
 
-  const handleMouseUp = (e) => {
-    window.removeEventListener("mousemove", move);
-    window.removeEventListener("mouseup", handleMouseUp);
-    if (hasMovedRef.current) {
-      e.preventDefault();
-      hasMovedRef.current = false;
-      return;
-    }
-  };
-
   const handleMouseDown = (e) => {
     e.preventDefault();
     setOnTop(index);
@@ -57,6 +47,18 @@ export default function DesktopFolderIcon({
     };
     window.addEventListener("mousemove", move);
     window.addEventListener("mouseup", handleMouseUp);
+  };
+
+  const handleMouseUp = (e) => {
+    window.removeEventListener("mousemove", move);
+    window.removeEventListener("mouseup", handleMouseUp);
+
+    if (!hasMovedRef.current) {
+      selectWindow(title);
+    }
+
+    // Reset the flag after every mouse up event
+    hasMovedRef.current = false;
   };
 
   return (

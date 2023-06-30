@@ -28,7 +28,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative flex items-center justify-center h-screen">
+    <div
+      className={`${
+        isLoading ? "relative flex items-center justify-center h-screen" : ""
+      }`}
+    >
       {isLoading ? (
         <MatrixRainingLetters className="absolute top-0 left-0 w-full h-full z-10" />
       ) : (
