@@ -10,10 +10,9 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [folders, setFolders] = useState([
-    { position: [0, 0], title: "Projects" },
+    { position: [50, 10], title: "Projects", imageSrc: "/folder.png" },
   ]);
   const [onTop, setOnTop] = useState("");
-  const [selectedFolder, setSelectedFolder] = useState({});
   const screenWidth = useScreenWidth();
 
   useEffect(() => {
