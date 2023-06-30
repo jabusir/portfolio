@@ -1,9 +1,9 @@
 import { Inter } from "next/font/google";
 import { useEffect, useState, useCallback } from "react";
 import { MatrixRainingLetters } from "react-mdr";
-import DesktopFolderIcon from "@/components/DesktopFolderIcon";
-import MobileFolderIcon from "@/components/MobileFolderIcon";
+import MobileView from "@/views/MobileView";
 import { useScreenWidth } from "@/hooks/useScreenWidth";
+import DesktopView from "@/views/DesktopView";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,31 +34,21 @@ export default function Home() {
         <MatrixRainingLetters className="absolute top-0 left-0 w-full h-full z-10" />
       ) : (
         <div>
-          {screenWidth < 900
-            ? folders.map(({ position, title }, index) => (
-                <MobileFolderIcon
-                  key={index}
-                  index={index}
-                  setOnTop={setOnTop}
-                  onTop={onTop}
-                  setPositions={handlePositionChange}
-                  imageSrc="/folder.png"
-                  title={title}
-                  position={position}
-                />
-              ))
-            : folders.map(({ title, position }, index) => (
-                <DesktopFolderIcon
-                  key={index}
-                  index={index}
-                  setOnTop={setOnTop}
-                  onTop={onTop}
-                  setPositions={handlePositionChange}
-                  imageSrc="/folder.png"
-                  title={title}
-                  position={position}
-                />
-              ))}
+          {screenWidth < 900 ? (
+            <MobileView
+              folders={folders}
+              setOnTop={setOnTop}
+              onTop={onTop}
+              handlePositionChange={handlePositionChange}
+            />
+          ) : (
+            <DesktopView
+              folders={folders}
+              setOnTop={setOnTop}
+              onTop={onTop}
+              handlePositionChange={handlePositionChange}
+            />
+          )}
         </div>
       )}
     </div>
