@@ -7,8 +7,8 @@ export default function MobileFolderIcon({
   index,
   position,
   setPositions,
-  setOnTop,
   imageSrc,
+  openApp,
 }) {
   const [hasMoved, setHasMoved] = useState(false);
   const dragOffset = useRef({ x: 0, y: 0 }); // Added reference for drag offset
@@ -32,14 +32,11 @@ export default function MobileFolderIcon({
     window.removeEventListener("touchend", handleTouchEnd);
     if (hasMoved) {
       e.preventDefault();
-    } else {
-      setOnTop(index);
     }
     setHasMoved(false);
   };
 
   const handleTouchStart = (e) => {
-    setOnTop(index);
     setHasMoved(false);
     const touch = e.touches[0];
     dragOffset.current = {
@@ -50,9 +47,13 @@ export default function MobileFolderIcon({
     window.addEventListener("touchend", handleTouchEnd);
   };
 
+  const handleTouch = () => {
+    openApp(title);
+  };
   return (
     <div
       onTouchStart={handleTouchStart}
+      className="flex flex-col items-center"
       style={{
         top: `${position[0]}px`,
         left: `${position[1]}px`,
@@ -68,10 +69,12 @@ export default function MobileFolderIcon({
         src={imageSrc}
         height="1000"
         width="1000"
-        alt={title}
+        alt={"Folder"}
         className="w-24 md:w-52"
         style={{ touchAction: "none" }}
+        onClick={handleTouch}
       />
+      <label>{title}</label>
     </div>
   );
 }
