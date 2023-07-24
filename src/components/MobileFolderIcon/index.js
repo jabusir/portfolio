@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useLongPress from "@/hooks/useLongPress.js";
 import Image from "next/image";
 
@@ -15,8 +16,11 @@ export default function MobileFolderIcon({
   const longPressEvents = useLongPress(() => setEditing((prev) => !prev));
 
   const handleTouch = () => {
-    openApp(title);
+    if (!longPressEvents.isLongPressActive) {
+      openApp(title);
+    }
   };
+
   return (
     <div
       className="flex flex-col items-center"
@@ -34,7 +38,6 @@ export default function MobileFolderIcon({
       <Image
         src={imageSrc}
         {...longPressEvents}
-        onLongP
         height="1000"
         width="1000"
         alt={"Folder"}
