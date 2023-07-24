@@ -62,7 +62,7 @@ export default function MobileLockScreen({ unlock }) {
 
   return (
     <div className="overflow-hidden">
-      <div className="flex items-center flex-col justify-between h-[90vh] overflow-hidden">
+      <div className="flex items-center flex-col justify-between h-[90vh] overflow-hidden py-10">
         <div className="flex flex-col items-center">
           <div>{localDate}</div>
           <div className="text-7xl font-bold">{localTime}</div>
