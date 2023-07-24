@@ -7,7 +7,7 @@ export default function Layout({ children }) {
 
   return (
     <>
-      {screenWidth > 900 ? <DesktopHeader /> : <MobileHeader />}
+      {screenWidth > 900 ? <DesktopHeader /> : null}
       <main>{children}</main>
     </>
   );
