@@ -2,19 +2,18 @@ import { useState, useEffect } from "react";
 
 const useLongPress = (callback = () => {}, ms = 300) => {
   const [startLongPress, setStartLongPress] = useState(false);
-  const [isLongPressing, setIsLongPressing] = useState(false);
+  const [isLongPressActive, setIsLongPressActive] = useState(false);
 
   useEffect(() => {
     let timerId;
     if (startLongPress) {
-      setIsLongPressing(true);
       timerId = setTimeout(() => {
         callback();
-        setIsLongPressing(false);
+        setIsLongPressActive(true);
       }, ms);
     } else {
       clearTimeout(timerId);
-      setIsLongPressing(false);
+      setIsLongPressActive(false);
     }
 
     return () => {
@@ -27,8 +26,13 @@ const useLongPress = (callback = () => {}, ms = 300) => {
     onMouseUp: () => setStartLongPress(false),
     onMouseLeave: () => setStartLongPress(false),
     onTouchStart: () => setStartLongPress(true),
-    onTouchEnd: () => setStartLongPress(false),
-    isLongPressing,
+    onTouchEnd: (e) => {
+      if (isLongPressActive) {
+        e.preventDefault();
+      }
+      setStartLongPress(false);
+    },
+    isLongPressActive,
   };
 };
 

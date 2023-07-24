@@ -16,7 +16,7 @@ export default function MobileFolderIcon({
   const longPressEvents = useLongPress(() => setEditing((prev) => !prev));
 
   const handleTouch = () => {
-    if (!longPressEvents.isLongPressing) {
+    if (!longPressEvents.isLongPressActive) {
       openApp(title);
     }
   };
