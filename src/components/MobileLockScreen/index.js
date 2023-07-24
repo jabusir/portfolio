@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import getClientLocalTime from "@/util/localTime";
-import MobileHeader from "../MobileHeader";
+import Image from "next/image";
 
 export default function MobileLockScreen({ unlock }) {
   const [localDate, setLocalDate] = useState("");
@@ -61,8 +61,15 @@ export default function MobileLockScreen({ unlock }) {
   };
 
   return (
-    <div className="overflow-hidden">
-      <div className="flex items-center flex-col justify-between h-[90vh] overflow-hidden py-10">
+    <div className="overflow-hidden text-white">
+      <Image
+        src="/homer-donut.jpg"
+        alt="background"
+        width={1000}
+        height={1000}
+        className="fixed top-0 left-0 -z-10 h-screen"
+      />
+      <div className="flex items-center flex-col justify-between h-[90vh] overflow-hidden py-10 text-white">
         <div className="flex flex-col items-center">
           <div>{localDate}</div>
           <div className="text-7xl font-bold">{localTime}</div>
@@ -77,7 +84,7 @@ export default function MobileLockScreen({ unlock }) {
           <div className="relative text-center w-screen flex flex-col items-center animate-bounce text-xs ">
             Swipe up to open
           </div>
-          <div className="h-1 w-36 mt-3 bg-gray-400 rounded-full"></div>
+          <div className="h-1 w-36 mt-3 bg-white rounded-full"></div>
         </div>
       </div>
     </div>
