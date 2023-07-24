@@ -63,7 +63,7 @@ export default function MobileLockScreen({ unlock }) {
   return (
     <>
       <MobileHeader isLockScreen={true} />
-      <div className="flex items-center flex-col justify-between h-[90vh] overflow-hidden pb-10">
+      <div className="flex items-center flex-col justify-between h-[90vh] overflow-hidden py-10">
         <div className="flex flex-col items-center">
           <div>{localDate}</div>
           <div className="text-7xl font-bold">{localTime}</div>
@@ -75,7 +75,7 @@ export default function MobileLockScreen({ unlock }) {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="relative text-center w-screen flex flex-col items-center animate-bounce text-xs">
+          <div className="relative text-center w-screen flex flex-col items-center animate-bounce text-xs ">
             Swipe up to open
           </div>
           <div className="h-1 w-36 mt-3 bg-gray-400 rounded-full"></div>
