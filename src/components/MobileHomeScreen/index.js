@@ -13,6 +13,7 @@ export default function MobileHomeScreen({
   const [editing, setEditing] = useState(false);
 
   const handleLongPress = () => {
+    console.log("here");
     setEditing((prevEditing) => !prevEditing);
   };
 

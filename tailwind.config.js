@@ -23,7 +23,7 @@ module.exports = {
         },
       },
       animation: {
-        jiggle: "jiggle 0.1s infinite",
+        jiggle: "jiggle 0.5s infinite",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
