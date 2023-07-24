@@ -12,7 +12,6 @@ export default function MobileHeader({ isLockScreen }) {
     const minuteInMilliseconds = 60000;
     const timeToNextMinute =
       minuteInMilliseconds - new Date().getSeconds() * 1000;
-
     const timeoutId = setTimeout(() => {
       setLocalTime(getClientLocalTime());
 
@@ -27,10 +26,11 @@ export default function MobileHeader({ isLockScreen }) {
     // Cleanup function to clear the timeout when the component unmounts
     return () => clearTimeout(timeoutId);
   }, []);
-
   return (
     <section className="flex justify-between pt-1">
-      <div></div>
+      <div>
+        {!isLockScreen && <div className="w-full ml-2">{localTime}</div>}
+      </div>
       <div className="flex items-center w-28 justify-evenly">
         <Image
           alt="signal"
@@ -46,8 +46,6 @@ export default function MobileHeader({ isLockScreen }) {
           width={1000}
           className="h-4 w-5"
         />
-
-        {!isLockScreen && <div className="w-full">{localTime}</div>}
 
         <BatteryStatus />
       </div>

@@ -63,14 +63,23 @@ export default function MobileLockScreen({ unlock }) {
   return (
     <>
       <MobileHeader isLockScreen={true} />
-      <div>{localDate}</div>
-      <div>{localTime}</div>
-      <div
-        ref={swipeRef}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        Swipe to Unlock
+      <div className="flex items-center flex-col justify-between h-[90vh]">
+        <div className="flex flex-col items-center">
+          <div>{localDate}</div>
+          <div className="text-7xl font-bold">{localTime}</div>
+        </div>
+
+        <div
+          className="flex flex-col items-center"
+          ref={swipeRef}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className="relative text-center w-screen flex flex-col items-center">
+            Swipe up to open
+            <div className="absolute bottom-0 h-1 w-36 mt-3 bg-gray-400 rounded-full"></div>
+          </div>
+        </div>
       </div>
     </>
   );
