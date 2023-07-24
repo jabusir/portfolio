@@ -20,23 +20,9 @@ export default function MobileHomeScreen({
   return (
     <>
       <Layout>
-        {folders.map(({ position, title, imageSrc }, index) => (
-          <MobileFolderIcon
-            key={index}
-            index={index}
-            setPositions={handlePositionChange}
-            imageSrc={title === "Projects" ? "/files.png" : imageSrc}
-            title={title}
-            position={position}
-            openApp={setOpenedApp}
-            editing={editing}
-            setEditing={setEditing}
-            onLongPress={handleLongPress}
-          />
-        ))}
-        {openedApp ? (
-          <MobileAppScreen name={openedApp} closeApp={handleAppClose} />
-        ) : null}
+        <div className="h-screen w-screen flex items-center justify-center bg-black text-white">
+          UNDER CONSTRUCTION
+        </div>
       </Layout>
     </>
   );
