@@ -76,7 +76,7 @@ export default function MobileLockScreen({ unlock }) {
         </div>
 
         <div
-          className="flex flex-col items-center"
+          className="flex flex-col items-center h-24 justify-center"
           ref={swipeRef}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
