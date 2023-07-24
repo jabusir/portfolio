@@ -61,7 +61,7 @@ export default function MobileLockScreen({ unlock }) {
   };
 
   return (
-    <>
+    <div className="overflow-hidden">
       <MobileHeader isLockScreen={true} />
       <div className="flex items-center flex-col justify-between h-[90vh] overflow-hidden py-10">
         <div className="flex flex-col items-center">
@@ -81,6 +81,6 @@ export default function MobileLockScreen({ unlock }) {
           <div className="h-1 w-36 mt-3 bg-gray-400 rounded-full"></div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
