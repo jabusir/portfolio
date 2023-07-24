@@ -75,10 +75,10 @@ export default function MobileLockScreen({ unlock }) {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="relative text-center w-screen flex flex-col items-center">
+          <div className="relative text-center w-screen flex flex-col items-center animate-bounce">
             Swipe up to open
-            <div className="absolute bottom-0 h-1 w-36 mt-3 bg-gray-400 rounded-full"></div>
           </div>
+          <div className="absolute bottom-0 h-1 w-36 mt-3 bg-gray-400 rounded-full"></div>
         </div>
       </div>
     </>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Layout from "../Layout";
 import MobileFolderIcon from "../MobileFolderIcon";
 import MobileAppScreen from "../MobileAppScreen";
@@ -9,6 +10,12 @@ export default function MobileHomeScreen({
   setOpenedApp,
   handleAppClose,
 }) {
+  const [editing, setEditing] = useState(false);
+
+  const handleLongPress = () => {
+    setEditing((prevEditing) => !prevEditing);
+  };
+
   return (
     <>
       <Layout>
@@ -21,6 +28,9 @@ export default function MobileHomeScreen({
             title={title}
             position={position}
             openApp={setOpenedApp}
+            editing={editing}
+            setEditing={setEditing}
+            onLongPress={handleLongPress}
           />
         ))}
         {openedApp ? (

@@ -8,7 +8,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [folders, setFolders] = useState([
-    { position: [50, 10], title: "Projects", imageSrc: "/folder.png" },
+    {
+      position: [50, 10],
+      mobilePosition: [1, 1],
+      title: "Projects",
+      imageSrc: "/folder.png",
+    },
   ]);
   const [onTop, setOnTop] = useState("");
   const screenWidth = useScreenWidth();

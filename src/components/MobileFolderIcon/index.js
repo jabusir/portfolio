@@ -1,4 +1,4 @@
-import { useCallback, useState, useRef } from "react";
+import useLongPress from "@/hooks/useLongPress.js";
 import Image from "next/image";
 
 export default function MobileFolderIcon({
@@ -9,7 +9,11 @@ export default function MobileFolderIcon({
   setPositions,
   imageSrc,
   openApp,
+  editing,
+  setEditing,
 }) {
+  const longPressEvents = useLongPress(() => setEditing((prev) => !prev));
+
   const handleTouch = () => {
     openApp(title);
   };
@@ -29,10 +33,12 @@ export default function MobileFolderIcon({
     >
       <Image
         src={imageSrc}
+        {...longPressEvents}
+        onLongP
         height="1000"
         width="1000"
         alt={"Folder"}
-        className="w-20 md:w-52"
+        className={`w-20 md:w-52 ${editing ? "animate-jiggle" : ""}`}
         style={{ touchAction: "none" }}
         onClick={handleTouch}
       />
