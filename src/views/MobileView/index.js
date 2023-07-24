@@ -1,28 +1,32 @@
-import MobileFolderIcon from "@/components/MobileFolderIcon";
-import Layout from "@/components/Layout";
+import { useState } from "react";
+import MobileHomeScreen from "@/components/MobileHomeScreen";
+import MobileLockScreen from "@/components/MobileLockScreen";
 
-export default function MobileView({
-  folders,
-  onTop,
-  setOnTop,
-  handlePositionChange,
-}) {
+export default function MobileView({ folders, handlePositionChange }) {
+  const [locked, setLocked] = useState(true);
+  const [openedApp, setOpenedApp] = useState("");
+
+  const handleUnlock = () => {
+    setLocked(false);
+  };
+
+  const handleAppClose = () => {
+    setOpenedApp("");
+  };
+
   return (
     <>
-      <Layout>
-        {folders.map(({ position, title, imageSrc }, index) => (
-          <MobileFolderIcon
-            key={index}
-            index={index}
-            setOnTop={setOnTop}
-            onTop={onTop}
-            setPositions={handlePositionChange}
-            imageSrc={title === "Projects" ? "/files.png" : imageSrc}
-            title={title}
-            position={position}
-          />
-        ))}
-      </Layout>
+      {locked ? (
+        <MobileLockScreen unlock={handleUnlock} />
+      ) : (
+        <MobileHomeScreen
+          folders={folders}
+          handlePositionChange={handlePositionChange}
+          openedApp={openedApp}
+          setOpenedApp={setOpenedApp}
+          handleAppClose={handleAppClose}
+        />
+      )}
     </>
   );
 }
