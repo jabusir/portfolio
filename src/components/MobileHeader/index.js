@@ -28,7 +28,7 @@ export default function MobileHeader({ isLockScreen }) {
   }, []);
   return (
     <section className="flex justify-between pt-1">
-      <div>
+      {/* <div>
         {!isLockScreen && <div className="w-full ml-2">{localTime}</div>}
       </div>
       <div className="flex items-center w-28 justify-evenly">
@@ -48,7 +48,7 @@ export default function MobileHeader({ isLockScreen }) {
         />
 
         <BatteryStatus />
-      </div>
+      </div> */}
     </section>
   );
 }
